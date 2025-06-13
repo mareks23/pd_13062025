@@ -28,7 +28,7 @@ class BookController extends Controller
         return redirect()->route('book.show', $book)->with('status', 'Book created successfully.');
     }
 
-    public function show(Book $book) {
+    public function show($book) {
         $book = Book::find($book);
         return view('books.show', ['singleBook' => $book]);
     }
@@ -46,7 +46,7 @@ class BookController extends Controller
 
         $book->update($data);
 
-        return redirect()->route('book.index', $book)->with('status', 'Book updated successfully.');;
+        return redirect()->route('book.show', $book)->with('status', 'Book updated successfully.');;
     }
     
     public function destroy(Book $book) {
