@@ -30,7 +30,7 @@ class BookController extends Controller
 
     public function show(Book $book) {
         $book = Book::find($book);
-        return redirect('book.show', ['singleBook' => $book]);
+        return view('books.show', ['singleBook' => $book]);
     }
 
     public function edit(Book $book) {
