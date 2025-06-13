@@ -1,11 +1,11 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
+<x-layout>
+<x-slot:title>
+
+        Mareks
+
+    </x-slot>
+
+
     @if (session('status'))
         <div>
             {{ session('status') }}
@@ -23,5 +23,4 @@
         @method('delete')
         <input type="submit" value="Dzēst">
     </form>
-</body>
-</html>
+</x-layout>

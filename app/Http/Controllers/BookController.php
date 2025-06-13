@@ -25,7 +25,7 @@ class BookController extends Controller
 
         Book::create($data);
 
-        return redirect()->route('book.show', $book)->with('status', 'Book created successfully.');
+        return redirect()->route('book.index')->with('status', 'Book created successfully.');
     }
 
     public function show($book) {
