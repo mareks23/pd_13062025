@@ -29,11 +29,12 @@ class BookController extends Controller
     }
 
     public function show(Book $book) {
+        $book = Book::find($book);
         return view('books.show', ['singleBook' => $book]);
     }
 
     public function edit(Book $book) {
-        return view('books.edit', ['editBook' => $book]);
+        return view('book.edit', ['editBook' => $book]);
     }
 
     public function update(Request $request, Book $book) {
