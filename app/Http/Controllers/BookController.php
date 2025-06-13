@@ -25,16 +25,16 @@ class BookController extends Controller
 
         Book::create($data);
 
-        return redirect()->route('book.show')->with('status', 'Book created successfully.');
+        return redirect()->route('book.show', $book)->with('status', 'Book created successfully.');
     }
 
     public function show(Book $book) {
         $book = Book::find($book);
-        return view('books.show', ['singleBook' => $book]);
+        return redirect('book.show', ['singleBook' => $book]);
     }
 
     public function edit(Book $book) {
-        return view('book.edit', ['editBook' => $book]);
+        return view('books.edit', ['editBook' => $book]);
     }
 
     public function update(Request $request, Book $book) {
@@ -46,11 +46,12 @@ class BookController extends Controller
 
         $book->update($data);
 
-        return redirect()->route('book.show', $book)->with('status', 'Book updated successfully.');;
+        return redirect()->route('book.index', $book)->with('status', 'Book updated successfully.');;
     }
     
     public function destroy(Book $book) {
+        $book = Book::find($book);
         $book->delete();
-        return redirect()->route('book.index')->with('status', 'Book deleted successfully.');
+        return redirect()->route('book.index', $book)->with('status', 'Book deleted successfully.');
     }
 }
