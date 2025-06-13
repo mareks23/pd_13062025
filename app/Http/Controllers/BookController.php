@@ -51,7 +51,7 @@ class BookController extends Controller
     
     public function destroy(Book $book) {
         $book = Book::find($book);
-        $book->delete();
-        return redirect()->route('book.index', $book)->with('status', 'Book deleted successfully.');
+        $book->each->delete();
+        return redirect()->route('book.index')->with('status', 'Book deleted successfully.');
     }
 }
